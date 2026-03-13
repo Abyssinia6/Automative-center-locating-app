@@ -1,19 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import jwt from 'jsonwebtoken';
+import { getToken } from 'next-auth/jwt';
 import { UserType } from '@/generated/prisma';
 
-interface DecodedToken {
-  id: number;
-  username: string;
-  email: string;
-  userType: UserType;
-  firstName: string;
-  lastName: string;
-  iat: number;
-  exp: number;
-}
-
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Public paths that don't require authentication
@@ -35,8 +24,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Get token from cookie
-  const token = request.cookies.get('auth-token')?.value;
+  // Get token using NextAuth getToken
+  const token = await getToken({ 
+    req: request, 
+    secret: process.env.NEXTAUTH_SECRET 
+  });
 
   if (!token) {
     // Redirect to signin if no token
@@ -44,11 +36,8 @@ export function middleware(request: NextRequest) {
   }
 
   try {
-    // Verify token
-    const decoded = jwt.verify(token, process.env.NEXTAUTH_SECRET!) as DecodedToken;
-
-    // Check user type based route access
-    const userType = decoded.userType;
+    // Extract user info from NextAuth token
+    const userType = token.userType as UserType;
 
     // Define protected routes for each user type
     const routePermissions = {
@@ -76,9 +65,9 @@ export function middleware(request: NextRequest) {
 
     // Add user info to request headers for API routes
     const response = NextResponse.next();
-    response.headers.set('x-user-id', decoded.id.toString());
-    response.headers.set('x-user-type', decoded.userType);
-    response.headers.set('x-username', decoded.username);
+    response.headers.set('x-user-id', token.id?.toString() || '');
+    response.headers.set('x-user-type', token.userType?.toString() || '');
+    response.headers.set('x-username', token.username?.toString() || '');
 
     return response;
   } catch (error) {

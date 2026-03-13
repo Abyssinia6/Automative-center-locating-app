@@ -25,6 +25,7 @@ export async function sendEmail({ to, subject, html, text }: EmailOptions): Prom
   // Check if email credentials are configured
   const hasEmailConfig = process.env.EMAIL_HOST && process.env.EMAIL_USER && process.env.EMAIL_PASSWORD;
   
+  console.log('=== EMAIL SENDING STATUS ===');
   console.log('Email config check:', {
     host: !!process.env.EMAIL_HOST,
     user: !!process.env.EMAIL_USER,
@@ -33,17 +34,20 @@ export async function sendEmail({ to, subject, html, text }: EmailOptions): Prom
   });
   
   if (!hasEmailConfig) {
-    console.log('=== EMAIL SIMULATION (No Credentials Configured) ===');
-    console.log('To:', to);
-    console.log('Subject:', subject);
-    console.log('HTML Content:');
+    console.log('🔧 EMAIL SIMULATION MODE (No Credentials Configured)');
+    console.log('📧 To:', to);
+    console.log('📋 Subject:', subject);
+    console.log('📝 HTML Content:');
     console.log(html);
+    console.log('💡 To send real emails, configure EMAIL_USER and EMAIL_PASSWORD in .env.local');
+    console.log('📖 See EMAIL_SETUP.md for instructions');
     console.log('==========================================');
     return;
   }
 
   try {
-    console.log('Sending email to:', to);
+    console.log('🚀 Sending real email to:', to);
+    console.log('📋 Subject:', subject);
     const result = await transporter.sendMail({
       from: process.env.EMAIL_FROM,
       to,
@@ -51,9 +55,12 @@ export async function sendEmail({ to, subject, html, text }: EmailOptions): Prom
       html,
       text: text || html.replace(/<[^>]*>/g, ''), // Strip HTML for text version
     });
-    console.log('Email sent successfully:', result.messageId);
+    console.log('✅ Email sent successfully!');
+    console.log('📧 Message ID:', result.messageId);
+    console.log('📊 Response:', result.response);
   } catch (error) {
-    console.error('Failed to send email:', error);
+    console.error('❌ Failed to send email:', error);
+    console.log('💡 Check your email credentials and network connection');
     throw new Error('Failed to send email');
   }
 }
