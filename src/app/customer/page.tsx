@@ -236,20 +236,20 @@ function CustomerDashboardContent() {
   const activeRequests = requests.filter(r => ['ACCEPTED', 'IN_PROGRESS'].includes(r.status));
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-black">
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
       
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-gray-900/95 backdrop-blur-sm shadow-lg border-b border-gray-700/50">
         <div className="max-w-7xl mx-auto py-4 px-4 sm:py-6 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="flex-1">
-              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 truncate">
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white truncate">
                 Customer Dashboard
               </h1>
               {notifications.filter(n => !n.read).length > 0 && (
-                <p className="text-sm text-gray-600 mt-1 sm:hidden">
+                <p className="text-sm text-gray-400 mt-1 sm:hidden">
                   {notifications.filter(n => !n.read).length} unread notification{notifications.filter(n => !n.read).length !== 1 ? 's' : ''}
                 </p>
               )}
@@ -258,7 +258,7 @@ function CustomerDashboardContent() {
             <div className="sm:hidden">
               <button
                 onClick={() => setActiveTab('notifications')}
-                className="relative p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+                className="relative p-2 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
                 aria-label={`View notifications (${notifications.filter(n => !n.read).length} unread)`}
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -347,7 +347,7 @@ function CustomerDashboardContent() {
 
       <main id="main-content" className="max-w-7xl mx-auto py-4 sm:py-6 px-4 sm:px-6 lg:px-8" role="main">
         {successMessage && (
-          <div className="mb-4 sm:mb-6 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg" role="alert" aria-live="polite">
+          <div className="mb-4 sm:mb-6 bg-green-900/50 border border-green-700/50 text-green-300 px-4 py-3 rounded-lg backdrop-blur-sm" role="alert" aria-live="polite">
             <div className="flex items-center">
               <svg className="h-4 w-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -358,7 +358,7 @@ function CustomerDashboardContent() {
         )}
 
         {error && (
-          <div className="mb-4 sm:mb-6 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg" role="alert" aria-live="assertive">
+          <div className="mb-4 sm:mb-6 bg-red-900/50 border border-red-700/50 text-red-300 px-4 py-3 rounded-lg backdrop-blur-sm" role="alert" aria-live="assertive">
             <div className="flex items-center">
               <svg className="h-4 w-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
@@ -368,15 +368,15 @@ function CustomerDashboardContent() {
           </div>
         )}
 
-        <div className="bg-white shadow-sm rounded-lg overflow-hidden">
-          <div className="border-b border-gray-200 bg-gray-50">
+        <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden border border-gray-700/50">
+          <div className="border-b border-gray-700/50 bg-gray-800/50">
             <div className="sm:hidden px-4 py-3">
               <label htmlFor="tab-select" className="sr-only">Select a tab</label>
               <select
                 id="tab-select"
                 value={activeTab}
                 onChange={(e) => setActiveTab(e.target.value as typeof activeTab)}
-                className="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
+                className="block w-full rounded-md border-gray-600 bg-gray-800/50 text-white py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
               >
                 <option value="overview">Overview</option>
                 <option value="requests">Service Requests</option>
@@ -394,8 +394,8 @@ function CustomerDashboardContent() {
                   onClick={() => setActiveTab(tab)}
                   className={`py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 ${
                     activeTab === tab
-                      ? 'border-blue-500 text-blue-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      ? 'border-blue-500 text-blue-400'
+                      : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-600'
                   }`}
                   aria-current={activeTab === tab ? 'page' : undefined}
                 >
@@ -462,38 +462,38 @@ function CustomerDashboardContent() {
             {activeTab === 'overview' && (
               <div>
                 <div className="mb-6">
-                  <h2 className="text-xl font-bold text-gray-900 mb-4">Quick Stats</h2>
+                  <h2 className="text-xl font-bold text-white mb-4">Quick Stats</h2>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <div className="bg-blue-900/30 border border-blue-700/50 rounded-lg p-4 backdrop-blur-sm">
                       <div className="flex items-center">
-                        <svg className="w-6 h-6 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-6 h-6 text-blue-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                         </svg>
                         <div>
-                          <p className="text-sm font-medium text-blue-700">Total Requests</p>
-                          <p className="text-2xl font-bold text-blue-900">{requests.length}</p>
+                          <p className="text-sm font-medium text-blue-300">Total Requests</p>
+                          <p className="text-2xl font-bold text-blue-100">{requests.length}</p>
                         </div>
                       </div>
                     </div>
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <div className="bg-green-900/30 border border-green-700/50 rounded-lg p-4 backdrop-blur-sm">
                       <div className="flex items-center">
-                        <svg className="w-6 h-6 text-green-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-6 h-6 text-green-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <div>
-                          <p className="text-sm font-medium text-green-700">Active Services</p>
-                          <p className="text-2xl font-bold text-green-900">{activeRequests.length}</p>
+                          <p className="text-sm font-medium text-green-300">Active Services</p>
+                          <p className="text-2xl font-bold text-green-100">{activeRequests.length}</p>
                         </div>
                       </div>
                     </div>
-                    <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                    <div className="bg-purple-900/30 border border-purple-700/50 rounded-lg p-4 backdrop-blur-sm">
                       <div className="flex items-center">
-                        <svg className="w-6 h-6 text-purple-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-6 h-6 text-purple-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                         </svg>
                         <div>
-                          <p className="text-sm font-medium text-purple-700">Unread Notifications</p>
-                          <p className="text-2xl font-bold text-purple-900">{notifications.filter(n => !n.read).length}</p>
+                          <p className="text-sm font-medium text-purple-300">Unread Notifications</p>
+                          <p className="text-2xl font-bold text-purple-100">{notifications.filter(n => !n.read).length}</p>
                         </div>
                       </div>
                     </div>
@@ -501,18 +501,18 @@ function CustomerDashboardContent() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <div className="bg-gray-50 rounded-lg p-6">
-                    <h3 className="text-lg font-medium text-gray-900 mb-4">Quick Actions</h3>
+                  <div className="bg-gray-800/50 rounded-lg p-6 backdrop-blur-sm border border-gray-700/50">
+                    <h3 className="text-lg font-medium text-white mb-4">Quick Actions</h3>
                     <div className="space-y-3">
                       <button
                         onClick={() => router.push('/customer/garages')}
-                        className="w-full flex items-center justify-between bg-white border border-gray-200 rounded-lg p-4 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full flex items-center justify-between bg-gray-900/50 border border-gray-600 rounded-lg p-4 hover:bg-gray-800/50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
                       >
                         <div className="flex items-center">
-                          <svg className="w-6 h-6 text-gray-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-6 h-6 text-gray-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                           </svg>
-                          <span className="font-medium text-gray-900">Find Garages</span>
+                          <span className="font-medium text-white">Find Garages</span>
                         </div>
                         <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -520,13 +520,13 @@ function CustomerDashboardContent() {
                       </button>
                       <button
                         onClick={() => setActiveTab('requests')}
-                        className="w-full flex items-center justify-between bg-white border border-gray-200 rounded-lg p-4 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full flex items-center justify-between bg-gray-900/50 border border-gray-600 rounded-lg p-4 hover:bg-gray-800/50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
                       >
                         <div className="flex items-center">
-                          <svg className="w-6 h-6 text-gray-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-6 h-6 text-gray-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                           </svg>
-                          <span className="font-medium text-gray-900">View Service Requests</span>
+                          <span className="font-medium text-white">View Service Requests</span>
                         </div>
                         <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -535,10 +535,10 @@ function CustomerDashboardContent() {
                     </div>
                   </div>
 
-                  <div className="bg-gray-50 rounded-lg p-6">
-                    <h3 className="text-lg font-medium text-gray-900 mb-4">Recent Activity</h3>
+                  <div className="bg-gray-800/50 rounded-lg p-6 backdrop-blur-sm border border-gray-700/50">
+                    <h3 className="text-lg font-medium text-white mb-4">Recent Activity</h3>
                     {requests.slice(0, 3).length === 0 ? (
-                      <p className="text-gray-500 text-sm">No recent activity</p>
+                      <p className="text-gray-400 text-sm">No recent activity</p>
                     ) : (
                       <div className="space-y-3">
                         {requests.slice(0, 3).map((request) => (
@@ -1116,7 +1116,7 @@ function ServiceTrackingTimeline({
 export default function CustomerDashboard() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-black flex items-center justify-center">
         <LoadingSpinner size="xl" />
       </div>
     }>

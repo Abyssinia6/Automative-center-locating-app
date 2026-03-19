@@ -2,244 +2,212 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
-      {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-gray-900">AutoService</h1>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link
-                href="/auth/signin"
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/auth/register"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-              >
-                Get Started
-              </Link>
-            </div>
-          </div>
+    <div className="min-h-screen bg-black text-white">
+      {/* NAV */}
+      <nav className="flex justify-between items-center px-8 py-6 border-b border-white/10">
+        <h1 className="text-xl font-semibold tracking-widest">AUTOSERVICE</h1>
+        <div className="flex gap-6 text-sm text-white/70">
+          <Link href="/auth/signin">Sign In</Link>
+          <Link href="/auth/register" className="bg-yellow-500 text-black px-4 py-2 rounded-lg font-medium">Get Started</Link>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10 animate-pulse"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-8">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Automotive Service
-              </span>
-              <br />
-              <span className="text-gray-900">Management Platform</span>
+      {/* HERO */}
+      <section className="px-8 py-16">
+        <div className="bg-gradient-to-r from-[#2b1d14] to-[#4b3326] rounded-3xl p-10 flex flex-col lg:flex-row items-center justify-between">
+          <div className="max-w-xl">
+            <h1 className="text-5xl font-bold leading-tight mb-6">
+              Automotive Service <br /> Management Platform
             </h1>
-            <p className="text-xl sm:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Connect customers with trusted auto service centers. Streamline operations, manage appointments,
-              and deliver exceptional service experiences.
+            <p className="text-white/70 mb-6">
+              Connect customers with trusted auto service centers. Streamline operations, manage appointments, and deliver exceptional service experiences.
             </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-              <Link
-                href="/auth/register"
-                className="group bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
-              >
-                Join as Customer
-                <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
-              </Link>
-              <Link
-                href="/auth/signin"
-                className="group bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-300 hover:border-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
-              >
-                Sign In
-                <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
-              </Link>
-            </div>
-
-            {/* Business Application Buttons */}
-            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-6">Join Our Business Network</h3>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/auth/apply-garage"
-                  className="group bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center"
-                >
-                  <span className="mr-2">🏪</span>
-                  Register Garage
-                  <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
-                </Link>
-                <Link
-                  href="/auth/apply-mechanic"
-                  className="group bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center"
-                >
-                  <span className="mr-2">🔧</span>
-                  Join as Mechanic
-                  <span className="ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
-                </Link>
-              </div>
+            <div className="flex gap-4">
+              <Link href="/auth/register" className="bg-yellow-500 text-black px-6 py-3 rounded-xl font-semibold">Join as Customer</Link>
+              <Link href="/auth/signin" className="border border-white/30 px-6 py-3 rounded-xl">Sign In</Link>
             </div>
           </div>
-        </div>
 
-        {/* Animated background elements */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl animate-bounce"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
+          <img
+            src="/auto1.jpg"
+            alt="car"
+            className="w-[500px] mt-10 lg:mt-0"
+          />
+        </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Everything You Need for Auto Service Excellence
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Our comprehensive platform connects customers, mechanics, and service centers
-              for seamless automotive service experiences.
+      {/* IMAGE SHOWCASE */}
+      <section className="px-8 py-16 bg-[#0a0a0a]">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 className="text-4xl font-bold mb-6">Connect with Garages and Mechanics Instantly</h2>
+            <p className="text-white/70 mb-8 text-lg">
+              Our platform bridges gap between vehicle owners, garages, and professional mechanics. Using a map-based system, customers can easily locate nearby garages or trusted mechanics in real time, no matter where they are.
             </p>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="text-center p-4 bg-white/5 rounded-xl">
+                <p className="text-lg font-semibold text-yellow-500 mb-2">Smart Location-Based Matching</p>
+                <p className="text-white/60 text-sm">Find nearest service provider instantly. Whether it's a minor issue or an urgent repair, our platform helps you connect quickly and efficiently.</p>
+              </div>
+              <div className="text-center p-4 bg-white/5 rounded-xl">
+                <p className="text-lg font-semibold text-yellow-500 mb-2">Seamless Communication</p>
+                <p className="text-white/60 text-sm">Reach out directly to garages and mechanics to get updates, request services, or coordinate assistance—all through a single, intuitive interface.</p>
+              </div>
+              <div className="text-center p-4 bg-white/5 rounded-xl">
+                <p className="text-lg font-semibold text-yellow-500 mb-2">Reliable & Convenient</p>
+                <p className="text-white/60 text-sm">Eliminate hassle of searching for help during breakdowns or accidents. Our system ensures you know exactly who is nearby, ready to assist, making vehicle care faster and safer.</p>
+              </div>
+              <div className="text-center p-4 bg-white/5 rounded-xl">
+                <p className="text-lg font-semibold text-yellow-500 mb-2">Designed for Everyone</p>
+                <p className="text-white/60 text-sm">Whether you're a car owner in need of help or a garage looking to expand your reach, our platform provides an easy-to-use, reliable system to connect and collaborate.</p>
+              </div>
+            </div>
           </div>
+          <img
+            src="/auto2.jpg"
+            alt="auto service"
+            className="rounded-2xl w-full h-[300px] object-cover"
+          />
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
-                <span className="text-white text-2xl">📍</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Location-Based Discovery</h3>
-              <p className="text-gray-600">
-                Find nearby service centers with GPS integration, real-time distance calculations,
-                and service availability filtering.
-              </p>
+      {/* SERVICES */}
+      <section className="px-8 py-16">
+        <h2 className="text-3xl font-semibold mb-10 text-white">Our Services</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            { title: "Collaborate with Garages", icon: <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0v-8a2 2 0 00-2-2H6a2 2 0 00-2 2v8m14 0h-2" /></svg>, desc: "Connect with trusted service partners" },
+            { title: "Scan Location", icon: <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>, desc: "Find nearby automotive services" },
+            { title: "Manage Mechanics", icon: <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>, desc: "Easy team management for garages" }
+          ].map((service) => (
+            <div key={service.title} className="bg-gradient-to-br from-white/10 to-white/5 p-6 rounded-2xl border border-white/10 hover:border-yellow-500/30 hover:from-white/15 hover:to-white/8 transition-all duration-300">
+              <div className="text-3xl mb-3">{service.icon}</div>
+              <h3 className="text-xl font-bold mb-2 text-white">{service.title}</h3>
+              <p className="text-white/60 text-sm">{service.desc}</p>
             </div>
+          ))}
+        </div>
+      </section>
 
-            {/* Feature 2 */}
-            <div className="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-6">
-                <span className="text-white text-2xl">📊</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Real-Time Tracking</h3>
-              <p className="text-gray-600">
-                Track service progress in real-time with detailed status updates,
-                estimated completion times, and progress notifications.
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-6">
-                <span className="text-white text-2xl">💳</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Secure Payments</h3>
-              <p className="text-gray-600">
-                Multiple payment options including cash, card, mobile money, and insurance
-                with secure transaction processing and payment tracking.
-              </p>
-            </div>
-
-            {/* Feature 4 */}
-            <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mb-6">
-                <span className="text-white text-2xl">⭐</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Rating & Reviews</h3>
-              <p className="text-gray-600">
-                Interactive 1-10 star rating system with detailed reviews,
-                customer feedback management, and performance analytics.
-              </p>
-            </div>
-
-            {/* Feature 5 */}
-            <div className="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-6">
-                <span className="text-white text-2xl">🔔</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Smart Notifications</h3>
-              <p className="text-gray-600">
-                Real-time notifications for service updates, appointment reminders,
-                payment confirmations, and important announcements.
-              </p>
-            </div>
-
-            {/* Feature 6 */}
-            <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 p-8 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mb-6">
-                <span className="text-white text-2xl">📈</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Analytics Dashboard</h3>
-              <p className="text-gray-600">
-                Comprehensive analytics for performance tracking, business insights,
-                customer satisfaction metrics, and growth analytics.
-              </p>
-            </div>
+      {/* LUXURY SHOWCASE */}
+      <section className="px-8 py-16 bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a]">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <img
+            src="/auto3.jpg"
+            alt="luxury automotive"
+            className="rounded-2xl w-full h-[300px] object-cover"
+          />
+          <div>
+            <h2 className="text-4xl font-bold mb-6">Digital Automotive Solutions</h2>
+            <p className="text-white/70 mb-8 text-lg">
+              Transforming how customers access automotive services through a seamless, user-friendly digital platform.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Auto Service Experience?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Join thousands of customers and service providers who trust our platform
-            for reliable automotive services.
+      {/* FEATURES */}
+      <section className="px-8 py-16 bg-[#111]">
+        <h2 className="text-3xl font-semibold mb-10 text-white">Everything You Need for Auto Service Excellence</h2>
+        <p className="text-xl text-white/70 mb-12 max-w-4xl mx-auto text-center">
+          Our comprehensive platform connects customers, mechanics, and service centers for seamless automotive service experiences.
+        </p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { title: "Location-Based Discovery", icon: "�", desc: "Find nearby service centers with GPS integration, real-time distance calculations, and service availability filtering." },
+            { title: "Real-Time Tracking", icon: "📊", desc: "Track service progress in real-time with detailed status updates, estimated completion times, and progress notifications." },
+            { title: "Secure Payments", icon: "�", desc: "Multiple payment options including cash, card, mobile money, and insurance with secure transaction processing and payment tracking." },
+            { title: "Rating & Reviews", icon: "⭐", desc: "Interactive 1-10 star rating system with detailed reviews, customer feedback management, and performance analytics." },
+            { title: "Smart Notifications", icon: "🔔", desc: "Real-time notifications for service updates, appointment reminders, payment confirmations, and important announcements." },
+            { title: "Analytics Dashboard", icon: "�", desc: "Comprehensive analytics for performance tracking, business insights, customer satisfaction metrics, and growth analytics." }
+          ].map((feature) => (
+            <div key={feature.title} className="p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300">
+              <div className="text-3xl mb-3">{feature.icon}</div>
+              <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+              <p className="text-white/60 text-sm">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* BUSINESS NETWORK */}
+      <section className="px-8 py-16 bg-[#0f0f0f]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-6">Join Our Business Network</h2>
+          <p className="text-white/70 mb-12 text-lg">
+            Partner with us and grow your automotive service business
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="grid md:grid-cols-2 gap-6">
             <Link
-              href="/auth/register"
-              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+              href="/auth/apply-garage"
+              className="group bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-800 hover:to-slate-900 text-white p-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-slate-600/30"
             >
-              Get Started Today
+              <div className="flex items-center justify-center mb-4">
+                <svg className="w-10 h-10 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0v-8a2 2 0 00-2-2H6a2 2 0 00-2 2v8m14 0h-2" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Register Garage</h3>
+              <p className="text-white/90 mb-4">List your service center and reach thousands of customers</p>
+              <div className="flex items-center justify-center text-yellow-400">
+                <span>Get Started</span>
+                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5-5m0 0h-2.5M7 7l5 5m0 0l-5-5m0 0H7" />
+                </svg>
+              </div>
             </Link>
             <Link
-              href="/auth/signin"
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+              href="/auth/apply-mechanic"
+              className="group bg-gradient-to-r from-stone-700 to-stone-800 hover:from-stone-800 hover:to-stone-900 text-white p-8 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-stone-600/30"
             >
-              Sign In
+              <div className="flex items-center justify-center mb-4">
+                <svg className="w-10 h-10 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 2.924 0 1.756-2.924-2.924-1.756-2.924H6.675c-.896 0-1.692.692-2.924H4.23c-.896 0-1.692.692-2.924H2.187a.692.692 0 00-.493.97l-.892.892c-.305.21-.503.326-.788.326H1.5a3 3 0 00-3 3V17a2 2 0 002 2h15a2 2 0 002-2V6a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h15a2 2 0 002-2V6a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h15a2 2 0 002-2V6a2 2 0 00-2-2H4a2 2 0 00-2 2v8z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Join as Mechanic</h3>
+              <p className="text-white/90 mb-4">Connect with garages and start your career</p>
+              <div className="flex items-center justify-center text-yellow-400">
+                <span>Apply Now</span>
+                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5-5m0 0h-2.5M7 7l5 5m0 0l-5-5m0 0H7" />
+                </svg>
+              </div>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* FOOTER */}
+      <footer className="border-t border-white/10 px-8 py-12">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
               <h3 className="text-2xl font-bold mb-4">AutoService</h3>
-              <p className="text-gray-400 mb-4">
-                Connecting customers with trusted automotive service centers through
-                innovative technology and seamless experiences.
+              <p className="text-white/70 mb-4">
+                Connecting customers with trusted automotive service centers through innovative technology and seamless experiences.
               </p>
             </div>
 
             <div>
               <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2">
-                <li><Link href="/auth/signin" className="text-gray-400 hover:text-white transition-colors">Sign In</Link></li>
-                <li><Link href="/auth/register" className="text-gray-400 hover:text-white transition-colors">Register</Link></li>
-                <li><Link href="/auth/forgot-password" className="text-gray-400 hover:text-white transition-colors">Forgot Password</Link></li>
+                <li><Link href="/auth/signin" className="text-white/70 hover:text-white transition-colors">Sign In</Link></li>
+                <li><Link href="/auth/register" className="text-white/70 hover:text-white transition-colors">Register</Link></li>
+                <li><Link href="/auth/forgot-password" className="text-white/70 hover:text-white transition-colors">Forgot Password</Link></li>
               </ul>
             </div>
 
             <div>
               <h4 className="text-lg font-semibold mb-4">Business</h4>
               <ul className="space-y-2">
-                <li><Link href="/auth/apply-garage" className="text-gray-400 hover:text-white transition-colors">Register Garage</Link></li>
-                <li><Link href="/auth/apply-mechanic" className="text-gray-400 hover:text-white transition-colors">Join as Mechanic</Link></li>
+                <li><Link href="/auth/apply-garage" className="text-white/70 hover:text-white transition-colors">Register Garage</Link></li>
+                <li><Link href="/auth/apply-mechanic" className="text-white/70 hover:text-white transition-colors">Join as Mechanic</Link></li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+          <div className="border-t border-white/10 mt-8 pt-8 text-center text-white/50">
             <p>&copy; 2024 AutoService Management Platform. All rights reserved.</p>
           </div>
         </div>

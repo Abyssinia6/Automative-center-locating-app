@@ -430,10 +430,10 @@ export default function MechanicDashboard() {
   const assignedRequests = requests.filter(r => r.mechanicId && ['ACCEPTED', 'IN_PROGRESS'].includes(r.status));
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow">
+    <div className="min-h-screen bg-black">
+      <header className="bg-gray-900/95 backdrop-blur-sm shadow-lg border-b border-gray-700/50">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-gray-900">Mechanic Dashboard</h1>
+          <h1 className="text-3xl font-bold text-white">Mechanic Dashboard</h1>
           <div className="flex items-center space-x-4">
             {notifications.filter(n => !n.read).length > 0 && (
               <div className="relative">
@@ -465,17 +465,17 @@ export default function MechanicDashboard() {
       </header>
 
       {/* Navigation Tabs */}
-      <div className="bg-white border-b">
+      <div className="bg-gray-900/50 backdrop-blur-sm border-b border-gray-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="-mb-px flex space-x-8">
             {(['requests', 'tracking', 'notifications', 'performance'] as const).map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 ${
                   activeTab === tab
-                    ? 'border-blue-500 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    ? 'border-blue-500 text-blue-400'
+                    : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-600'
                 }`}
               >
                 {tab === 'requests' && 'Service Requests'}
@@ -496,7 +496,7 @@ export default function MechanicDashboard() {
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
           {error && (
-            <div className="mb-6 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+            <div className="mb-6 bg-red-900/50 border border-red-700/50 text-red-300 px-4 py-3 rounded backdrop-blur-sm">
               {error}
             </div>
           )}
@@ -505,16 +505,16 @@ export default function MechanicDashboard() {
           {activeTab === 'requests' && (
             <div className="space-y-6">
               {/* Status Filter */}
-              <div className="bg-white shadow rounded-lg p-4">
+              <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-4 border border-gray-700/50">
                 <div className="flex items-center space-x-4">
-                  <label htmlFor="status-filter" className="text-sm font-medium text-gray-700">
+                  <label htmlFor="status-filter" className="text-sm font-medium text-gray-300">
                     Filter by Status:
                   </label>
                   <select
                     id="status-filter"
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value)}
-                    className="border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    className="border-gray-600 bg-gray-800/50 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-white py-2 px-3"
                   >
                     <option value="all">All Requests</option>
                     <option value="PENDING">Pending</option>
@@ -527,41 +527,41 @@ export default function MechanicDashboard() {
               </div>
 
               {/* Service Requests */}
-              <div className="bg-white shadow rounded-lg">
+              <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-700/50">
                 <div className="px-4 py-5 sm:p-6">
-                  <h3 className="text-lg font-medium text-gray-900 mb-4">
+                  <h3 className="text-lg font-medium text-white mb-4">
                     Service Requests ({requests.length} found)
                   </h3>
                   
                   {loading ? (
                     <div className="text-center py-8">
                       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-                      <p className="mt-2 text-gray-600">Loading requests...</p>
+                      <p className="mt-2 text-gray-400">Loading requests...</p>
                     </div>
                   ) : requests.length === 0 ? (
-                    <div className="text-center py-8 text-gray-500">
-                      <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="text-center py-8 text-gray-400">
+                      <svg className="mx-auto h-12 w-12 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                       </svg>
                       <p className="mt-2">No service requests found.</p>
-                      <p className="text-sm">Requests from your garage will appear here.</p>
+                      <p className="text-sm text-gray-500">Requests from your garage will appear here.</p>
                     </div>
                   ) : (
                     <div className="space-y-4">
                       {requests.map((request) => (
                         <div
                           key={request.id}
-                          className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                          className="border border-gray-600 bg-gray-800/30 rounded-lg p-4 hover:bg-gray-800/50 hover:shadow-md transition-all duration-200"
                         >
                           <div className="flex justify-between items-start mb-3">
                             <div className="flex-1">
                               <div className="flex items-center space-x-3 mb-2">
-                                <h4 className="text-lg font-semibold text-gray-900">
+                                <h4 className="text-lg font-semibold text-white">
                                   Request #{request.id}
                                 </h4>
                                 {getStatusBadge(request.status)}
                               </div>
-                              <div className="text-sm text-gray-600 space-y-1">
+                              <div className="text-sm text-gray-400 space-y-1">
                                 <div>Customer: {request.customer.firstName} {request.customer.lastName}</div>
                                 <div>Vehicle: {request.vehicle.vehicleType} - {request.vehicle.plateCode} {request.vehicle.plateNumber}</div>
                                 <div>Created: {formatDateTime(new Date(request.createdAt))}</div>

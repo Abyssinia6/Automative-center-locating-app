@@ -67,13 +67,13 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-black py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
             Sign in to your account
           </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
+          <p className="mt-2 text-center text-sm text-gray-300">
             Auto Service Management System
           </p>
         </div>
@@ -89,7 +89,7 @@ export default function SignInPage() {
                 required
                 value={formData.userType}
                 onChange={handleInputChange}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-4 py-3 border border-gray-600 bg-gray-800/50 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all duration-200"
               >
                 <option value={UserType.CUSTOMER}>Customer</option>
                 <option value={UserType.MECHANIC}>Mechanic</option>
@@ -109,7 +109,7 @@ export default function SignInPage() {
                 required
                 value={formData.username}
                 onChange={handleInputChange}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-4 py-3 border border-gray-600 bg-gray-800/50 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all duration-200"
                 placeholder="Username"
               />
             </div>
@@ -125,24 +125,24 @@ export default function SignInPage() {
                 required
                 value={formData.password}
                 onChange={handleInputChange}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-4 py-3 border border-gray-600 bg-gray-800/50 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all duration-200"
                 placeholder="Password"
               />
             </div>
           </div>
 
           {error && (
-            <div className="text-red-600 text-sm text-center">{error}</div>
+            <div className="text-red-400 text-sm text-center bg-red-900/30 border border-red-700/50 rounded-lg px-3 py-2 backdrop-blur-sm">{error}</div>
           )}
 
           <div>
             <button
               type="submit"
               disabled={loading}
-              className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${
+              className={`group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white transition-all duration-200 ${
                 loading
-                  ? 'bg-indigo-400 cursor-not-allowed'
-                  : 'bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                  ? 'bg-gray-600 cursor-not-allowed'
+                  : 'bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'
               }`}
             >
               {loading ? 'Signing in...' : 'Sign in'}
@@ -154,34 +154,34 @@ export default function SignInPage() {
               <div>
                 <Link
                   href="/auth/forgot-password"
-                  className="text-indigo-600 hover:text-indigo-500"
+                  className="text-blue-400 hover:text-blue-300 transition-colors"
                 >
                   Forgot your password?
                 </Link>
               </div>
               <div>
-                <span className="text-gray-600">New customer? </span>
+                <span className="text-gray-400">New customer? </span>
                 <Link
                   href="/auth/register"
-                  className="text-indigo-600 hover:text-indigo-500"
+                  className="text-blue-400 hover:text-blue-300 transition-colors"
                 >
                   Create an account
                 </Link>
               </div>
             </div>
 
-            <div className="border-t border-gray-200 pt-4">
-              <p className="text-sm text-gray-600 mb-2">Apply for business account:</p>
+            <div className="border-t border-gray-700/50 pt-4">
+              <p className="text-sm text-gray-400 mb-2">Apply for business account:</p>
               <div className="flex space-x-4 justify-center">
                 <Link
                   href="/auth/apply-garage"
-                  className="text-xs bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded"
+                  className="text-xs bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1 rounded transition-colors"
                 >
                   Garage Owner
                 </Link>
                 <Link
                   href="/auth/apply-mechanic"
-                  className="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded"
+                  className="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded transition-colors"
                 >
                   Mechanic
                 </Link>
@@ -189,7 +189,7 @@ export default function SignInPage() {
             </div>
             
             <div>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-400">
                 Demo credentials:
               </p>
               <p className="text-xs text-gray-500 mt-2">
