@@ -144,21 +144,21 @@ export default function ApplyMechanicPage() {
         ) : (
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="garage" className="block text-sm font-medium text-gray-700 mb-2">
-                Select Garage *
+              <label htmlFor="garage" className="block text-sm font-semibold text-gray-800 mb-2">
+                Choose a Garage *
               </label>
               <select
                 id="garage"
                 value={selectedGarageId}
                 onChange={(e) => setSelectedGarageId(e.target.value)}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 bg-white transition-colors"
               >
-                <option value="">Choose a garage...</option>
+                <option value="" className="text-gray-500">Select a Garage</option>
                 {garages.map((garage) => (
-                  <option key={garage.id} value={garage.id.toString()}>
+                  <option key={garage.id} value={garage.id.toString()} className="text-gray-900">
                     {garage.garageName} (Admin: {garage.admin.firstName} {garage.admin.lastName})
-                    {garage.rating > 0 && ` - Rating: ${garage.rating.toFixed(1)}`}
+                    {garage.rating > 0 && ` - ⭐ ${garage.rating.toFixed(1)}`}
                   </option>
                 ))}
               </select>
