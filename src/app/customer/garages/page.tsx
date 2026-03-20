@@ -109,7 +109,12 @@ export default function CustomerGarages() {
       });
     } catch (error) {
       console.error('Location error:', error);
-      setLocationError('Unable to get your location. You can still browse all garages.');
+      // Fallback to Kazanchis coordinates for demo purposes
+      setUserLocation({
+        lat: 9.0167,
+        lng: 38.7667
+      });
+      setLocationError('Using default location (Kazanchis, Addis Ababa). Enable location for personalized results.');
     }
   };
 
@@ -205,6 +210,31 @@ export default function CustomerGarages() {
               {error}
             </div>
           )}
+
+          {/* Location-based Search Button */}
+          <div className="bg-white shadow rounded-lg mb-6 p-6">
+            <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+              <div className="flex-1">
+                <h3 className="text-lg font-medium text-gray-900 mb-2">Find Nearby Garages</h3>
+                <p className="text-sm text-gray-600">
+                  {userLocation 
+                    ? `Location detected! Showing results sorted by distance from your current location.`
+                    : 'Get your current location to find the nearest garages.'
+                  }
+                </p>
+              </div>
+              <button
+                onClick={getUserLocation}
+                className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md font-medium flex items-center gap-2"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                {userLocation ? 'Update Location' : 'Find Garages Near Me'}
+              </button>
+            </div>
+          </div>
 
           {/* Search and Filter Controls */}
           <div className="bg-white shadow rounded-lg mb-6 p-6">

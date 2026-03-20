@@ -91,7 +91,12 @@ function RequestServiceContent() {
       });
     } catch (error) {
       console.error('Location error:', error);
-      setLocationError('Unable to get your location. Please enable location services and try again.');
+      // Fallback to Kazanchis coordinates for demo purposes
+      setUserLocation({
+        lat: 9.0167,
+        lng: 38.7667
+      });
+      setLocationError('Using default location (Kazanchis, Addis Ababa). Enable location for accurate service requests.');
     }
   };
 

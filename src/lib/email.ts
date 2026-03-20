@@ -2,12 +2,12 @@ import nodemailer from 'nodemailer';
 
 // Create transporter
 const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST,
-  port: parseInt(process.env.EMAIL_PORT || '587'),
+  host: process.env.EMAIL_SERVER_HOST,
+  port: parseInt(process.env.EMAIL_SERVER_PORT || '587'),
   secure: false, // true for 465, false for other ports
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD,
+    user: process.env.EMAIL_SERVER_USER,
+    pass: process.env.EMAIL_SERVER_PASSWORD,
   },
   tls: {
     rejectUnauthorized: false // Allow self-signed certificates for development
@@ -23,25 +23,49 @@ export interface EmailOptions {
 
 export async function sendEmail({ to, subject, html, text }: EmailOptions): Promise<void> {
   // Check if email credentials are configured
-  const hasEmailConfig = process.env.EMAIL_HOST && process.env.EMAIL_USER && process.env.EMAIL_PASSWORD;
-  
-  console.log('=== EMAIL SENDING STATUS ===');
-  console.log('Email config check:', {
-    host: !!process.env.EMAIL_HOST,
-    user: !!process.env.EMAIL_USER,
-    password: !!process.env.EMAIL_PASSWORD,
-    hasConfig: hasEmailConfig
-  });
+  const hasEmailConfig = process.env.EMAIL_SERVER_HOST && process.env.EMAIL_SERVER_USER && process.env.EMAIL_SERVER_PASSWORD;
   
   if (!hasEmailConfig) {
-    console.log('🔧 EMAIL SIMULATION MODE (No Credentials Configured)');
-    console.log('📧 To:', to);
-    console.log('📋 Subject:', subject);
-    console.log('📝 HTML Content:');
+    // ============================================================================
+    // DEVELOPMENT/DEMO FALLBACK - For School Project Demonstration
+    // ============================================================================
+    // This is a development fallback that allows demonstration of the full
+    // forgot password flow without requiring real email credentials.
+    // In production, this would be replaced with a real SMTP service like
+    // Resend, SendGrid, or Gmail SMTP.
+    // ============================================================================
+    
+    console.log('\n' + '='.repeat(80));
+    console.log('🔧 DEVELOPMENT EMAIL SIMULATION MODE');
+    console.log('📧 Email credentials not configured - showing email template for demo');
+    console.log('='.repeat(80));
+    
+    console.log('\n� TO:', to);
+    console.log('📋 SUBJECT:', subject);
+    
+    // Extract reset URL from HTML for clickable console link
+    const resetUrlMatch = html.match(/href="([^"]*reset-password[^"]*)"/);
+    if (resetUrlMatch) {
+      console.log('\n� CLICKABLE RESET LINK:');
+      console.log('   ' + resetUrlMatch[1]);
+      console.log('\n💡 Click the link above in your terminal to test password reset');
+    }
+    
+    console.log('\n📝 EMAIL CONTENT:');
+    console.log('-'.repeat(40));
     console.log(html);
-    console.log('💡 To send real emails, configure EMAIL_USER and EMAIL_PASSWORD in .env.local');
-    console.log('📖 See EMAIL_SETUP.md for instructions');
-    console.log('==========================================');
+    console.log('-'.repeat(40));
+    
+    console.log('\n� SETUP INSTRUCTIONS:');
+    console.log('   To send real emails, configure these variables in .env.local:');
+    console.log('   - EMAIL_SERVER_HOST');
+    console.log('   - EMAIL_SERVER_USER');
+    console.log('   - EMAIL_SERVER_PASSWORD');
+    console.log('   - EMAIL_FROM');
+    console.log('   See EMAIL_SETUP.md for detailed instructions');
+    
+    console.log('\n' + '='.repeat(80));
+    console.log('🎓 DEMO MODE: Perfect for school project presentations!\n');
     return;
   }
 
