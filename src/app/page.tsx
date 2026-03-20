@@ -47,7 +47,7 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center p-4 bg-white/5 rounded-xl">
                 <p className="text-lg font-semibold text-yellow-500 mb-2">Smart Location-Based Matching</p>
-                <p className="text-white/60 text-sm">Find nearest service provider instantly. Whether it's a minor issue or an urgent repair, our platform helps you connect quickly and efficiently.</p>
+                <p className="text-white/60 text-sm">Find nearest service provider instantly. Whether it&apos;s a minor issue or an urgent repair, our platform helps you connect quickly and efficiently.</p>
               </div>
               <div className="text-center p-4 bg-white/5 rounded-xl">
                 <p className="text-lg font-semibold text-yellow-500 mb-2">Seamless Communication</p>
@@ -59,7 +59,7 @@ export default function Home() {
               </div>
               <div className="text-center p-4 bg-white/5 rounded-xl">
                 <p className="text-lg font-semibold text-yellow-500 mb-2">Designed for Everyone</p>
-                <p className="text-white/60 text-sm">Whether you're a car owner in need of help or a garage looking to expand your reach, our platform provides an easy-to-use, reliable system to connect and collaborate.</p>
+                <p className="text-white/60 text-sm">Whether you&apos;re a car owner in need of help or a garage looking to expand your reach, our platform provides an easy-to-use, reliable system to connect and collaborate.</p>
               </div>
             </div>
           </div>
@@ -114,12 +114,12 @@ export default function Home() {
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { title: "Location-Based Discovery", icon: "�", desc: "Find nearby service centers with GPS integration, real-time distance calculations, and service availability filtering." },
+            { title: "Location-Based Discovery", icon: "📍", desc: "Find nearby service centers with GPS integration, real-time distance calculations, and service availability filtering." },
             { title: "Real-Time Tracking", icon: "📊", desc: "Track service progress in real-time with detailed status updates, estimated completion times, and progress notifications." },
-            { title: "Secure Payments", icon: "�", desc: "Multiple payment options including cash, card, mobile money, and insurance with secure transaction processing and payment tracking." },
+            { title: "Secure Payments", icon: "💳", desc: "Multiple payment options including cash, card, mobile money, and insurance with secure transaction processing and payment tracking." },
             { title: "Rating & Reviews", icon: "⭐", desc: "Interactive 1-10 star rating system with detailed reviews, customer feedback management, and performance analytics." },
             { title: "Smart Notifications", icon: "🔔", desc: "Real-time notifications for service updates, appointment reminders, payment confirmations, and important announcements." },
-            { title: "Analytics Dashboard", icon: "�", desc: "Comprehensive analytics for performance tracking, business insights, customer satisfaction metrics, and growth analytics." }
+            { title: "Analytics Dashboard", icon: "📈", desc: "Comprehensive analytics for performance tracking, business insights, customer satisfaction metrics, and growth analytics." }
           ].map((feature) => (
             <div key={feature.title} className="p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300">
               <div className="text-3xl mb-3">{feature.icon}</div>
