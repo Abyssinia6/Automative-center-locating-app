@@ -270,7 +270,7 @@ export default function CustomerProfilePage() {
                   id="firstName"
                   value={profileData.firstName}
                   onChange={(e) => setProfileData(prev => ({ ...prev, firstName: e.target.value }))}
-                  className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 placeholder-gray-500"
                   required
                 />
               </div>
@@ -284,7 +284,7 @@ export default function CustomerProfilePage() {
                   id="lastName"
                   value={profileData.lastName}
                   onChange={(e) => setProfileData(prev => ({ ...prev, lastName: e.target.value }))}
-                  className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 placeholder-gray-500"
                   required
                 />
               </div>
@@ -298,7 +298,7 @@ export default function CustomerProfilePage() {
                   id="phoneNumber"
                   value={profileData.phoneNumber}
                   onChange={(e) => setProfileData(prev => ({ ...prev, phoneNumber: e.target.value }))}
-                  className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 placeholder-gray-500"
                 />
               </div>
 
@@ -340,7 +340,7 @@ export default function CustomerProfilePage() {
                       id="vehicleType"
                       value={vehicleData.vehicleType}
                       onChange={(e) => setVehicleData(prev => ({ ...prev, vehicleType: e.target.value }))}
-                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 placeholder-gray-500"
                       placeholder="e.g., Toyota Camry"
                       required
                     />
@@ -354,7 +354,7 @@ export default function CustomerProfilePage() {
                       id="color"
                       value={vehicleData.color}
                       onChange={(e) => setVehicleData(prev => ({ ...prev, color: e.target.value }))}
-                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 placeholder-gray-500"
                       placeholder="e.g., Blue"
                       required
                     />
@@ -371,7 +371,7 @@ export default function CustomerProfilePage() {
                       id="plateNumber"
                       value={vehicleData.plateNumber}
                       onChange={(e) => setVehicleData(prev => ({ ...prev, plateNumber: e.target.value }))}
-                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 placeholder-gray-500"
                       placeholder="12345"
                       required
                     />
@@ -385,7 +385,7 @@ export default function CustomerProfilePage() {
                       id="plateCode"
                       value={vehicleData.plateCode}
                       onChange={(e) => setVehicleData(prev => ({ ...prev, plateCode: e.target.value }))}
-                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 placeholder-gray-500"
                       placeholder="AA"
                       required
                     />
@@ -399,7 +399,7 @@ export default function CustomerProfilePage() {
                       id="countryCode"
                       value={vehicleData.countryCode}
                       onChange={(e) => setVehicleData(prev => ({ ...prev, countryCode: e.target.value }))}
-                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 placeholder-gray-500"
                       placeholder="ET"
                       required
                     />
@@ -425,14 +425,21 @@ export default function CustomerProfilePage() {
                 <p className="text-gray-500 text-center py-4">No vehicles registered yet.</p>
               ) : (
                 vehicles.map((vehicle) => (
-                  <div key={vehicle.id} className="border border-gray-200 rounded-lg p-4">
+                  <div key={vehicle.id} className="border border-gray-200 rounded-lg p-4 bg-gray-50">
                     <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="font-medium text-gray-900">{vehicle.vehicleType}</h3>
-                        <p className="text-sm text-gray-600">Color: {vehicle.color}</p>
-                        <p className="text-sm text-gray-600">
-                          Plate: {vehicle.plateCode} {vehicle.plateNumber} ({vehicle.countryCode})
-                        </p>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-lg text-gray-900 mb-2">{vehicle.vehicleType}</h3>
+                        <div className="space-y-1">
+                          <p className="text-sm font-medium text-gray-800">
+                            <span className="text-gray-600">Color:</span> <span className="text-gray-900">{vehicle.color}</span>
+                          </p>
+                          <p className="text-sm font-medium text-gray-800">
+                            <span className="text-gray-600">Plate:</span> 
+                            <span className="text-gray-900 font-mono bg-white px-2 py-1 rounded border border-gray-300 ml-1">
+                              {vehicle.plateCode} {vehicle.plateNumber} ({vehicle.countryCode})
+                            </span>
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>

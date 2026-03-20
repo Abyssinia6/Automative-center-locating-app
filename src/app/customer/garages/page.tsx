@@ -149,37 +149,39 @@ export default function CustomerGarages() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <div className="flex items-center space-x-4">
-            <button
-              onClick={() => router.push('/customer')}
-              className="text-gray-600 hover:text-gray-900"
-            >
-              ← Back to Dashboard
-            </button>
-            <h1 className="text-3xl font-bold text-gray-900">Find Garages</h1>
-          </div>
-          <div className="flex space-x-2">
-            <button
-              onClick={() => router.push('/customer/profile')}
-              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium"
-            >
-              Profile
-            </button>
-            <button
-              onClick={() => router.push('/auth/change-password')}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
-            >
-              Change Password
-            </button>
-            <button
-              onClick={handleLogout}
-              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium"
-            >
-              Logout
-            </button>
+    <div className="min-h-screen bg-black">
+      <header className="bg-gray-900/95 backdrop-blur-sm shadow-lg border-b border-gray-700/50">
+        <div className="max-w-7xl mx-auto py-4 px-4 sm:py-6 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={() => router.push('/customer')}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                ← Back to Dashboard
+              </button>
+              <h1 className="text-3xl font-bold text-white">Find Garages</h1>
+            </div>
+            <div className="flex space-x-2">
+              <button
+                onClick={() => router.push('/customer/profile')}
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium"
+              >
+                Profile
+              </button>
+              <button
+                onClick={() => router.push('/auth/change-password')}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
+              >
+                Change Password
+              </button>
+              <button
+                onClick={handleLogout}
+                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium"
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -188,11 +190,11 @@ export default function CustomerGarages() {
         <div className="px-4 py-6 sm:px-0">
           {/* Location Status */}
           {locationError && (
-            <div className="mb-4 bg-yellow-50 border border-yellow-200 text-yellow-700 px-4 py-3 rounded flex items-center justify-between">
+            <div className="mb-4 bg-yellow-900/50 border border-yellow-700/50 text-yellow-300 px-4 py-3 rounded flex items-center justify-between backdrop-blur-sm">
               <span>{locationError}</span>
               <button
                 onClick={getUserLocation}
-                className="bg-yellow-200 hover:bg-yellow-300 text-yellow-800 px-3 py-1 rounded text-sm"
+                className="bg-yellow-700/50 hover:bg-yellow-600/50 text-yellow-200 px-3 py-1 rounded text-sm transition-colors"
               >
                 Try Again
               </button>
@@ -200,13 +202,13 @@ export default function CustomerGarages() {
           )}
 
           {userLocation && (
-            <div className="mb-4 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded">
+            <div className="mb-4 bg-green-900/50 border border-green-700/50 text-green-300 px-4 py-3 rounded backdrop-blur-sm">
               Location detected! Showing garages sorted by distance from your location.
             </div>
           )}
 
           {error && (
-            <div className="mb-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+            <div className="mb-4 bg-red-900/50 border border-red-700/50 text-red-300 px-4 py-3 rounded backdrop-blur-sm">
               {error}
             </div>
           )}
@@ -237,7 +239,7 @@ export default function CustomerGarages() {
           </div>
 
           {/* Search and Filter Controls */}
-          <div className="bg-white shadow rounded-lg mb-6 p-6">
+          <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg mb-6 p-6 border border-gray-700/50">
             <div className="flex flex-col md:flex-row gap-4 items-center">
               <div className="flex-1">
                 <form onSubmit={handleSearch}>
@@ -246,14 +248,14 @@ export default function CustomerGarages() {
                     placeholder="Search garages by name..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
+                    className="w-full border-gray-600 bg-gray-800/50 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400 py-3 px-4"
                   />
                 </form>
               </div>
 
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm font-medium"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 {showFilters ? 'Hide Filters' : 'Show Filters'}
               </button>
@@ -262,13 +264,13 @@ export default function CustomerGarages() {
             {showFilters && (
               <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-300 mb-1">
                     Sort By
                   </label>
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    className="w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
+                    className="w-full border-gray-600 bg-gray-800/50 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-white py-2 px-3"
                   >
                     <option value="default">Default</option>
                     {userLocation && <option value="distance">Distance</option>}
@@ -279,7 +281,7 @@ export default function CustomerGarages() {
 
                 {userLocation && (
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-300 mb-1">
                       Max Distance (km)
                     </label>
                     <input
@@ -289,19 +291,19 @@ export default function CustomerGarages() {
                       onChange={(e) => setMaxDistance(e.target.value)}
                       min="1"
                       max="100"
-                      className="w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
+                      className="w-full border-gray-600 bg-gray-800/50 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-white placeholder-gray-400 py-2 px-3"
                     />
                   </div>
                 )}
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-300 mb-1">
                     Min Rating
                   </label>
                   <select
                     value={minRating}
                     onChange={(e) => setMinRating(e.target.value)}
-                    className="w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
+                    className="w-full border-gray-600 bg-gray-800/50 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-white py-2 px-3"
                   >
                     <option value="">Any</option>
                     {[1,2,3,4,5,6,7,8,9,10].map(n => (
@@ -311,13 +313,13 @@ export default function CustomerGarages() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-300 mb-1">
                     Max Rating
                   </label>
                   <select
                     value={maxRating}
                     onChange={(e) => setMaxRating(e.target.value)}
-                    className="w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
+                    className="w-full border-gray-600 bg-gray-800/50 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-white py-2 px-3"
                   >
                     <option value="">Any</option>
                     {[1,2,3,4,5,6,7,8,9,10].map(n => (
@@ -329,7 +331,7 @@ export default function CustomerGarages() {
                 <div className="flex items-end">
                   <button
                     onClick={clearFilters}
-                    className="bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded-md text-sm font-medium"
+                    className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
                   >
                     Clear Filters
                   </button>
@@ -339,26 +341,26 @@ export default function CustomerGarages() {
           </div>
 
           {/* Garages List */}
-          <div className="bg-white shadow rounded-lg">
+          <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-700/50">
             <div className="px-4 py-5 sm:p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">
+              <h3 className="text-lg font-medium text-white mb-4">
                 Available Garages ({garages.length} found)
               </h3>
               
               {loading ? (
                 <div className="text-center py-8">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto"></div>
-                  <p className="mt-2 text-gray-600">Loading garages...</p>
+                  <p className="mt-2 text-gray-400">Loading garages...</p>
                 </div>
               ) : garages.length === 0 ? (
-                <div className="text-center py-8 text-gray-500">
-                  <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="text-center py-8 text-gray-400">
+                  <svg className="mx-auto h-12 w-12 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
                   <p className="mt-2">No garages found matching your criteria.</p>
                   <button
                     onClick={clearFilters}
-                    className="mt-2 text-green-600 hover:text-green-500"
+                    className="mt-2 text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     Clear filters to see all garages
                   </button>
@@ -368,11 +370,11 @@ export default function CustomerGarages() {
                   {garages.map((garage) => (
                     <div
                       key={garage.id}
-                      className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
+                      className="border border-gray-600 bg-gray-800/30 rounded-lg p-4 hover:bg-gray-800/50 hover:shadow-md transition-all duration-200 cursor-pointer"
                       onClick={() => setSelectedGarage(garage)}
                     >
                       <div className="flex justify-between items-start mb-2">
-                        <h4 className="text-lg font-semibold text-gray-900">
+                        <h4 className="text-lg font-semibold text-white">
                           {garage.garageName}
                         </h4>
                         <div className="text-right">
